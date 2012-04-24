@@ -53,10 +53,8 @@ class HIR
 
   end
 
-  class << self
-    def evaluate(&script)
-      self.new.instance_eval(&script).to_s
-    end
+  def self.evaluate(&script)
+    HIR.new.instance_eval(&script).to_s
   end
 
   include HTMLTags
