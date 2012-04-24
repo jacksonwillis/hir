@@ -27,6 +27,9 @@ hir { p "Lorem ipsum", class: "foo" } #=> "<p class='foo'>Lorem ipsum</p>"
 include HIR::HTMLTags
 header { h1 "lol" } #=> "<header><h1>lol</h1></header>"
 
+# declare your own tags!
+HIR::HTMLTags.declare_tag :myTag
+myTag "test" #=> "<myTag>test</myTag>"
 ```
 
 ### Template layout
