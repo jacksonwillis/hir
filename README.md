@@ -53,5 +53,7 @@ def default_layout(&content)
 end
 
 default_layout { p "Lorem ipsum, dolor sit amet" }
-#=> "<!DOCTYPE html>\n<html><head><title>hir test</title><meta charset='UTF-8'/></head><body><header><h1>hir test</h1></header><section id='content'><p>Lorem ipsum, dolor sit amet</p><img src='dog.png'/></section></body></html>"
+#=> "<!DOCTYPE html>\n<html><head><title>hir test</title>" \
+    "<meta charset='UTF-8'/></head><body><header><h1>hir test</h1></header>" \
+    "<section id='content'><p>Lorem ipsum, dolor sit amet</p></section></body></html>"
 ```
