@@ -42,16 +42,16 @@ include HIR::HTMLTags
 header { h1 "lol" } #=> "<header><h1>lol</h1></header>"
 ```
 
-# Extension
+## Extension
 
-## Declare your own tags!
+### Declare your own tags!
 
 ```ruby
 HIR::HTMLTags.declare_tag :myTag
-myTag "test" #=> "<myTag>test</myTag>"
+hir { myTag "test" } #=> "<myTag>test</myTag>"
 ```
 
-## Custom tags
+### Custom tags
 
 ```ruby
 def error_box(content = "", &block)
