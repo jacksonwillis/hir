@@ -26,6 +26,7 @@ hir do
     li "milk"
   end
 end #=> "<h1>grocery list</h1><ul><li>apple</li><li>cheese</li><li>milk</li></ul>"
+```
 
 ### Attributes and self-closing tags
 
