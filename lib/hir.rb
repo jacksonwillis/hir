@@ -5,6 +5,8 @@ class Hash
 end
 
 class HIR
+  VERSION = "0.1.0"
+
   module HTMLTags
 
     def self.declare_tag(tagname)
