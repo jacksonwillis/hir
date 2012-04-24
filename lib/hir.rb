@@ -27,7 +27,7 @@ class HIR
        select small source span strike strong style sub summary sup table tbody
        td textarea tfoot th thead time title tr track tt u ul var video wbr ]
 
-    def doctype
+    def doctype!
       handle_output "<!DOCTYPE html>\n"
     end
 
