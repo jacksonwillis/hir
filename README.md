@@ -2,6 +2,8 @@
 
 [![Build Status](https://secure.travis-ci.org/jacksonwillis/hir.png?branch=master)](http://travis-ci.org/jacksonwillis/hir)
 
+    $ gem install hir
+
 ## Examples
 
 ### Ruby as HTML!
@@ -10,7 +12,11 @@
 require "hir"
 
 hir { strong "Hello, world!" } #=> "<strong>Hello, world!</strong>
+```
 
+### Nesting elements
+
+```ruby
 hir do
   h1 "grocery list"
 
@@ -21,20 +27,48 @@ hir do
   end
 end #=> "<h1>grocery list</h1><ul><li>apple</li><li>cheese</li><li>milk</li></ul>"
 
-# Attributes and self-closing tags
+### Attributes and self-closing tags
+
+```ruby
 hir { meta! charset: "UTF-8" } #=> "<meta charset='UTF-8'/>"
 hir { p "Lorem ipsum", class: "foo" } #=> "<p class='foo'>Lorem ipsum</p>"
+```
 
-# use outside of the `hir` block by including the module
+### Use outside of the `hir` block by including the module
+
+```ruby
 include HIR::HTMLTags
 header { h1 "lol" } #=> "<header><h1>lol</h1></header>"
+```
 
-# declare your own tags!
+# Extension
+
+## Declare your own tags!
+
+```ruby
 HIR::HTMLTags.declare_tag :myTag
 myTag "test" #=> "<myTag>test</myTag>"
 ```
 
-### Template layout
+## Custom tags
+
+```ruby
+def error_box(content = "", &block)
+  hir { div(content, class: "error", &block) }
+end
+
+error_box #=> "<div class='error'></div>"
+error_box "An error has occured" #=> "<div class='error'>An error has occured</div>"
+error_box do
+  p "The following errors have occured:"
+  ul do
+    li "FuntimeError"
+    li "StackUnderflowError"
+  end
+end #=> "<div class='error'><p>The following errors have occured:</p><ul><li>FuntimeError</li><li>StackUnderflowError</li></ul></div>"
+```
+
+## Template layout
 
 ```ruby
 require "hir"
