@@ -38,7 +38,8 @@ class HIR
     private
 
       def tag(tagname, content = "", options = {}, &script)
-        handle_output "<#{tagname}#{options.to_html_attrs}>#{content}#{HIR.evaluate(&script) if block_given?}</#{tagname}>"
+        handle_output "<#{tagname}#{options.to_html_attrs}>#{content}" \
+                      "#{HIR.evaluate(&script) if block_given?}</#{tagname}>"
       end
 
       # self-closing tag
