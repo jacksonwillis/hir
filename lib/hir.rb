@@ -37,9 +37,9 @@ class HIR
 
     private
 
-      def tag(tagname, content = "", options = {}, &script)
+      def tag(tagname, content = "", options = {}, &children)
         handle_output "<#{tagname}#{options.to_html_attrs}>#{content}" \
-                      "#{HIR.evaluate(&script) if block_given?}</#{tagname}>"
+                      "#{HIR.to_html(&children) if block_given?}</#{tagname}>"
       end
 
       # self-closing tag
@@ -53,8 +53,8 @@ class HIR
 
   end
 
-  def self.evaluate(&script)
-    HIR.new.instance_eval(&script).to_s
+  def self.to_html(&content)
+    HIR.new.instance_eval(&content).to_s
   end
 
   include HTMLTags
@@ -68,6 +68,6 @@ class HIR
   end
 end
 
-def hir(&script)
-  HIR.evaluate(&script)
+def hir(&content)
+  HIR.to_html(&content)
 end
