@@ -33,7 +33,7 @@ describe :hir do
   end
 
   it "allows user-defined tags" do
-    HIR::HTMLTags.declare_tag :foo
+    HIR::Tags.add_tag :foo
     hir { foo "bar" }.should eq "<foo>bar</foo>"
   end
 

@@ -5,20 +5,20 @@ class Hash
 end
 
 class HIR
-  VERSION = "0.1.0"
+  VERSION = "1.0.0"
 
-  module HTMLTags
+  module Tags
 
-    def self.declare_tag(tagname)
+    def self.add_tag(tagname)
       define_method(tagname, ->(*args, &block) { tag(tagname, *args, &block) })
       define_method("#{tagname}!", ->(*args, &block) { tag_sc(tagname, *args) })
     end
 
-    def self.declare_tags(*tagnames)
-      tagnames.each { |tagname| declare_tag(tagname) }
+    def self.add_tags(*tagnames)
+      tagnames.each { |tagname| add_tag(tagname) }
     end
 
-    declare_tags *%w[
+    add_tags *%w[
        a abbr acronym address applet area article aside audio b base basefont
        bdi bdo big blockquote body br button canvas caption center cite code
        col colgroup command datalist dd del details dfn dir div dl dt em embed
@@ -56,17 +56,13 @@ class HIR
   end
 
   def self.to_html(&content)
-    HIR.new.instance_eval(&content).to_s
+    HIR.new.instance_eval(&content)
   end
 
-  include HTMLTags
+  include Tags
 
   def initialize
     @tags = []
-  end
-
-  def to_s
-    @tags.join
   end
 end
 

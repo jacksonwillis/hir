@@ -11,7 +11,7 @@
 ```ruby
 require "hir"
 
-hir { strong "Hello, world!" } #=> "<strong>Hello, world!</strong>
+hir { strong "Hello, world!" } #=> "<strong>Hello, world!</strong>"
 ```
 
 ### Nesting elements
@@ -35,7 +35,7 @@ hir { meta! charset: "UTF-8" } #=> "<meta charset='UTF-8'/>"
 hir { p "Lorem ipsum", class: "foo" } #=> "<p class='foo'>Lorem ipsum</p>"
 ```
 
-### Use outside of the `hir` block by including the module
+### Use outside of the `hir` block by including the module `HIR::HTMlTags`
 
 ```ruby
 include HIR::HTMLTags
@@ -47,7 +47,7 @@ header { h1 "lol" } #=> "<header><h1>lol</h1></header>"
 ### Declare your own tags!
 
 ```ruby
-HIR::HTMLTags.declare_tag :myTag
+HIR::Tags.add_tag :myTag
 hir { myTag "test" } #=> "<myTag>test</myTag>"
 ```
 
@@ -58,8 +58,9 @@ def error_box(content = "", &block)
   hir { div(content, class: "error", &block) }
 end
 
-error_box #=> "<div class='error'></div>"
+error_box                        #=> "<div class='error'></div>"
 error_box "An error has occured" #=> "<div class='error'>An error has occured</div>"
+
 error_box do
   p "The following errors have occured:"
   ul do
