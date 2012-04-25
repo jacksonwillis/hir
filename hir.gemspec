@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name          = "hir"
-  gem.version       = "1.0.0"
+  gem.version       = "1.0.1"
   gem.files         = ["lib/hir.rb"]
 
   gem.add_development_dependency("rspec", "~> 0.9")
