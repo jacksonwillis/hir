@@ -35,10 +35,10 @@ hir { meta! charset: "UTF-8" } #=> "<meta charset='UTF-8'/>"
 hir { p "Lorem ipsum", class: "foo" } #=> "<p class='foo'>Lorem ipsum</p>"
 ```
 
-### Use outside of the `hir` block by including the module `HIR::HTMlTags`
+### Use outside of the `hir` block by including the module `HIR::Tags`
 
 ```ruby
-include HIR::HTMLTags
+include HIR::Tags
 header { h1 "lol" } #=> "<header><h1>lol</h1></header>"
 ```
 
