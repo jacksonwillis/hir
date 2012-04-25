@@ -31,4 +31,19 @@ describe :hir do
     hir { comment "invisible" }.should eq "<!-- invisible -->"
     hir { doctype! }.should eq "<!DOCTYPE html>\n"
   end
+
+  it "allows user-defined tags" do
+    HIR::HTMLTags.declare_tag :foo
+    hir { foo "bar" }.should eq "<foo>bar</foo>"
+  end
+
+  it "allows tag templates" do
+    def error_box(content = "", &block)
+      hir { div(content, class: "error", &block) }
+    end
+
+    error_box.should eq "<div class='error'></div>"
+    error_box("An error has occured.").should eq "<div class='error'>An error has occured.</div>"
+    error_box { p "test" }.should eq "<div class='error'><p>test</p></div>"
+  end
 end
