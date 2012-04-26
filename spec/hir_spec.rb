@@ -36,7 +36,7 @@ describe :hir do
         none " another thing "
         em "the next thing"
       end
-    }.should eq "<p><strong>something</something> another thing <em>the next thing</em></p>"
+    }.should eq "<p><strong>something</strong> another thing <em>the next thing</em></p>"
   end
 
   it "allows user-defined tags" do
