@@ -61,13 +61,12 @@ end
 error_box                        #=> "<div class='error'></div>"
 error_box "An error has occured" #=> "<div class='error'>An error has occured</div>"
 
-error_box do
-  p "The following errors have occured:"
+error_box "The following errors have occured:" do
   ul do
     li "FuntimeError"
     li "StackUnderflowError"
   end
-end #=> "<div class='error'><p>The following errors have occured:</p><ul><li>FuntimeError</li><li>StackUnderflowError</li></ul></div>"
+end #=> "<div class='error'>The following errors have occured:<ul><li>FuntimeError</li><li>StackUnderflowError</li></ul></div>"
 ```
 
 ## Template layout
