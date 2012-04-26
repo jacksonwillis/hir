@@ -38,6 +38,10 @@ class HIR
       handle_output "<!-- #{content} -->"
     end
 
+    def none(content)
+      handle_output content
+    end
+
     private
 
       def tag(tagname, content = "", options = {}, &children)

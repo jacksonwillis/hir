@@ -30,6 +30,13 @@ describe :hir do
   it "handles special cases" do
     hir { comment "invisible" }.should eq "<!-- invisible -->"
     hir { doctype! }.should eq "<!DOCTYPE html>\n"
+    hir {
+      p do
+        strong "something"
+        none " another thing "
+        em "the next thing"
+      end
+    }.should eq "<p><strong>something</something> another thing <em>the next thing</em></p>"
   end
 
   it "allows user-defined tags" do
