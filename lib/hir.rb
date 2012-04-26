@@ -10,8 +10,8 @@ class HIR
   module Tags
 
     def self.add_tag(tagname)
-      define_method(tagname, lambda { |*args, &block| tag(tagname, *args, &block) })
-      define_method("#{tagname}!", lambda { |*args, &block| tag_sc(tagname, *args) })
+      define_method(tagname)  { |*args, &block| tag(tagname, *args, &block) }
+      define_method("#{tagname}!") { |*args, &block| tag_sc(tagname, *args) }
     end
 
     def self.add_tags(*tagnames)
