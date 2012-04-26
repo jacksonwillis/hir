@@ -5,6 +5,7 @@ Gem::Specification.new do |gem|
   gem.version       = "1.0.2"
   gem.files         = ["lib/hir.rb"]
 
+  gem.required_ruby_version = ">= 1.8.7"
   gem.add_development_dependency("rspec", "~> 0.9")
 
   gem.description   = "hir: HTML in Ruby"
