@@ -8,7 +8,7 @@ describe :hir do
   end
 
   it "allows tag attributes" do
-    hir { p "LOL!", class: "userPost" }.should eq "<p class='userPost'>LOL!</p>"
+    hir { p "LOL!", :class => "userPost" }.should eq "<p class='userPost'>LOL!</p>"
   end
 
   it "allows nesting" do
@@ -24,7 +24,7 @@ describe :hir do
 
   it "allows self-closing tags" do
     hir { br! }.should eq "<br/>"
-    hir { meta! charset: "UTF-8" }.should eq "<meta charset='UTF-8'/>"
+    hir { meta! :charset => "UTF-8" }.should eq "<meta charset='UTF-8'/>"
   end
 
   it "handles special cases" do
@@ -39,7 +39,7 @@ describe :hir do
 
   it "allows tag templates" do
     def error_box(content = "", &block)
-      hir { div(content, class: "error", &block) }
+      hir { div(content, :class => "error", &block) }
     end
 
     error_box.should eq "<div class='error'></div>"
