@@ -85,3 +85,8 @@ end
 def hir(&content)
   HIR.to_html(&content)
 end
+
+def sir(styles)
+  stylesheet = HIR.new.sir(styles)
+  stylesheet.to_s
+end
