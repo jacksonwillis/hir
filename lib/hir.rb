@@ -87,6 +87,7 @@ def hir(&content)
 end
 
 def sir(styles)
-  stylesheet = HIR.new.sir(styles)
+  stylesheet = HIR.new
+  stylesheet.sir(styles)
   stylesheet.to_s
 end
