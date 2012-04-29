@@ -60,19 +60,25 @@ class HIR
       end
 
       def handle_output(output)
-        self.class.eql?(HIR) ? (@tags << output).join : output
+        self.class.eql?(HIR) ? @tags << output : output
       end
 
   end
 
   def self.to_html(&content)
-    HIR.new.instance_eval(&content)
+    html_page = HIR.new
+    html_page.instance_eval(&content)
+    html_page.to_s
   end
 
   include Tags
 
   def initialize
     @tags = []
+  end
+
+  def to_s
+    @tags.join
   end
 end
 
