@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name          = "hir"
-  gem.version       = "1.1.0"
+  gem.version       = "1.1.1"
   gem.files         = ["lib/hir.rb"]
 
   gem.required_ruby_version = ">= 1.8.7"

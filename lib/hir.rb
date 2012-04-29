@@ -5,7 +5,7 @@ class Hash
 end
 
 class HIR
-  VERSION = "1.1.0"
+  VERSION = "1.1.1"
 
   module Tags
 
