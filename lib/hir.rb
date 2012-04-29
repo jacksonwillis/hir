@@ -42,6 +42,11 @@ class HIR
       handle_output content
     end
 
+    def sir(styles)
+      handle_output styles.map { |target, rules|
+        "#{target}{#{rules.map { |rule| "#{rule[0]}:#{rule[1]}" }.join(";")}}" }.join
+    end
+
     private
 
       def tag(tagname, content = "", options = {}, &children)
