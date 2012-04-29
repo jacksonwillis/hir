@@ -53,4 +53,8 @@ describe :hir do
     error_box("An error has occured.").should eq "<div class='error'>An error has occured.</div>"
     error_box { p "test" }.should eq "<div class='error'><p>test</p></div>"
   end
+
+  it "writes css with sir" do
+    sir(html: { background: "black", color: "white" }).should eq "html{background:black;color:white}"
+  end
 end
